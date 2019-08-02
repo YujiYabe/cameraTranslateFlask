@@ -1,7 +1,12 @@
+参考URL
 https://cloud.google.com/appengine/docs/standard/python/quickstart?hl=ja
+https://momijiame.tumblr.com/post/39324429279/python-%E3%81%AE-flask-%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%83%86%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B
 
+テスト実行
+python3 main_test.py 
 
-
+ローカル実行
 dev_appserver.py app.yaml
 
+デプロイ
 
