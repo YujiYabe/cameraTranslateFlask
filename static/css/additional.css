@@ -1,0 +1,218 @@
+@font-face {
+  font-family: 'NotoSansMono';
+  /* src: url(mplus-1m-regular.ttf); */
+  src: url(NotoSansMonoCJKjp-Regular.otf);
+}
+body {
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 0;
+  height: 99vh;
+  font-family: NotoSansMono, Consolas, 'Courier New', Courier, Monaco, monospace;
+}
+body #flexbox_container {
+  display: flex;
+  width: 100%;
+  height: 99vh;
+}
+body #flexbox_container #flexbox_left_pane {
+  display: flex;
+  flex-direction: column;
+  margin: 1px;
+  background: whitesmoke;
+  height: 99vh;
+  width: 15%;
+  min-width: 1%;
+  overflow: auto;
+  color: white;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_button_switch_note {
+  background-color: whitesmoke;
+  margin: 10px 3px;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_button_input_search {
+  background-color: whitesmoke;
+  margin: 5px 3px;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body {
+  display: flex;
+  overflow: auto;
+  background-color: whitesmoke;
+  margin: 1px;
+  width: 99%;
+  height: 100%;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body .notedb_datetime {
+  font-size: 5px;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body .notedb_address {
+  font-size: 5px;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body .notedb_button {
+  text-align: left;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body .currentItem {
+  background-color: lightblue;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body .page_item {
+  cursor: pointer;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body .left_pane_page_object {
+  text-align: left;
+}
+body #flexbox_container #flexbox_left_pane #flexbox_left_body .page_item:hover {
+  cursor: pointer;
+}
+body #flexbox_container .flexbox_cent_line {
+  width: 0.5%;
+  background: dimgray;
+  left: auto !important;
+}
+body #flexbox_container .flexbox_cent_line:hover {
+  cursor: pointer;
+  background: hotpink;
+}
+body #flexbox_container .dragging {
+  background: hotpink;
+}
+body #flexbox_container #flexbox_rght_pane {
+  display: flex;
+  display: -webkit-flex;
+  /* Safari */
+  flex-direction: column;
+  background-color: whitesmoke;
+  width: 84.5%;
+  margin: 1px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 99%;
+  width: 99%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_1 {
+  background-color: whitesmoke;
+  margin: 1px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_1 .right_pane_note_name {
+  font-size: 40px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_2 {
+  background-color: whitesmoke;
+  margin: 1px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_3 {
+  display: flex;
+  flex-direction: column;
+  margin: 1px;
+  margin-top: 1%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_3 #page_star_div {
+  margin-left: 1%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_3 #page_star_div .ratingstar {
+  color: black;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_3 #page_star_div .ratingstar:hover {
+  color: orange;
+  cursor: pointer;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_3 #page_title_div {
+  width: 100%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_3 #flexbox_page_head_3_tool {
+  background-color: whitesmoke;
+  margin: 1px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_head_4 #flexbox_page_head_3_tool {
+  background-color: whitesmoke;
+  margin: 1px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_body {
+  background-color: whitesmoke;
+  margin: 1px;
+  overflow: auto;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_body #page_body {
+  min-height: 100px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_body #upload_zone {
+  background-color: lightskyblue;
+  height: 100%;
+  overflow: auto;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_body #upload_zone .droparea {
+  height: 100%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_page_pane #flexbox_page_body .image_style {
+  border: 1px lightgray solid;
+  width: 95%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 99%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_head {
+  background-color: lightgray;
+  margin: 1px;
+  width: 99%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_head input {
+  width: 90%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body {
+  background-color: whitesmoke;
+  margin: 1px;
+  width: 99%;
+  overflow: auto;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr {
+  width: 100%;
+  display: flex;
+  margin: 1px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr .note_td_1 {
+  width: 10%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr .note_td_2 {
+  width: 10%;
+  padding: 5px;
+  display: table-cell;
+  vertical-align: middle;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr .note_td_2 .ratingstar {
+  color: black;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr .note_td_2 .ratingstar:hover {
+  color: orange;
+  cursor: pointer;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr .note_td_3 {
+  width: 35%;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr .note_td_4 {
+  width: 35%;
+  padding: 5px;
+}
+body #flexbox_container #flexbox_rght_pane #flexbox_note_pane #flexbox_note_body #parent_note_table .note_tr .note_td_5 {
+  width: 10%;
+}
+
+html, body {
+  font-size: 16px;
+  font-family: 'Noto Sans Japanese', sans-serif;
+  text-align: center;
+}
+canvas {
+border: 1px #333 solid;
+max-width: 100%;
+height: auto;
+}

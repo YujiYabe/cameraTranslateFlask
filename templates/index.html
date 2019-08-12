@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>camera translate</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" href="static/favicon.ico">
+	<!-- <script src="static/js/jquery.min.js"> </script> -->
+	<noscript>
+		<h1>Welcome To The App</h1>
+		<p style="color: red;">JavaScriptを有効にしてください。</p>
+	</noscript>
+
+	<script src="static/js/axios.min.js"></script>
+	<link href="static/css/vuetify.min.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+	<meta name="theme-color" content="#317EFB" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+</head>
+
+<body>
+
+	<div id="app">
+
+		<div id="waitImageZone" align="center">
+			<img border="0" src="./static/wait.gif" max-width="80%" max-height="80%">
+		</div>
+
+		<div id="applicationZone">
+			<!-- <div id="applicationZone" style="display: none;"> -->
+			<v-app id="inspire">
+				<v-container fluid grid-list-md>
+					<v-layout row wrap>
+
+						<v-flex d-flex xs12 sm12 md12>
+							<v-card flat="true" color="grey lighten-5" class="text-xs-center">
+
+								<v-card-title primary class="title">translate text from camera</v-card-title>
+
+								<label for="imageSelect">
+									<v-flex d-flex xs6 sm6 md3>
+										<input type="file" id="imageSelect" v-on:change="canvasDraw"
+											accept="image/png, image/jpeg, image/gif" />
+										<v-chip color="primary" text-color="white">
+											<v-avatar>
+												<v-icon>photo_camera</v-icon>
+											</v-avatar>
+											Image
+										</v-chip>
+									</v-flex>
+								</label>
+
+								<form id='imageForm'></form>
+								<v-flex d-flex xs10 sm10 md10>
+									<v-card flat="true">
+										<div v-show="isShowPreview">
+											<img id="preview" src="" />
+										</div>
+										<canvas id="canvas" name="canvas" class="devMode"></canvas>
+									</v-card>
+								</v-flex>
+								<br>
+
+								<!-- ====================== -->
+								<div v-on:click="imageUpload" id="buttonScanFile" v-show="isShowButtonScanFile">
+									<v-flex d-flex xs6 sm6 md3>
+
+										<v-chip color="primary" text-color="white" class="cursor">
+											<v-avatar>
+												<v-icon>scanner</v-icon>
+											</v-avatar>
+											let's scan
+										</v-chip>
+
+									</v-flex>
+								</div>
+
+
+								<div v-show="isShowZoneScanedText">
+
+									<!-- ====================== -->
+									<v-card-title primary class="title">Scaned Text</v-card-title>
+
+									<v-flex d-flex xs10 sm10 md10>
+										<div id="sourceTranslatePhrase" v-text="sourceTranslatePhrase"
+											contenteditable="true" class="divTextarea"></div>
+									</v-flex>
+
+
+									<!-- ====================== -->
+
+									<v-flex d-flex xs1 sm1 md1>
+										<div v-on:click="pushSelectedLanguage('es', $event)">
+											<v-chip class="cursor langSymbol es">español</v-chip>
+										</div>
+
+										<div v-on:click="pushSelectedLanguage('en', $event)">
+											<v-chip class="cursor langSymbol en">english</v-chip>
+										</div>
+										<div v-on:click="pushSelectedLanguage('fr', $event)">
+											<v-chip class="cursor langSymbol fr">Français</v-chip>
+										</div>
+										<div v-on:click="pushSelectedLanguage('ru', $event)">
+											<v-chip class="cursor langSymbol ru">Русский язык</v-chip>
+										</div>
+									</v-flex>
+
+									<v-flex d-flex xs1 sm1 md1>
+
+
+										<div v-on:click="pushSelectedLanguage('ja', $event)">
+											<v-chip class="cursor langSymbol ja">日本語</v-chip>
+										</div>
+
+										<div v-on:click="pushSelectedLanguage('zh', $event)">
+											<v-chip class="cursor langSymbol zh">中文-简体</v-chip>
+										</div>
+
+										<div v-on:click="pushSelectedLanguage('ko', $event)">
+											<v-chip class="cursor langSymbol ko">한국어</v-chip>
+										</div>
+
+										<div v-on:click="pushSelectedLanguage('ar', $event)">
+											<v-chip class="cursor langSymbol ar">العربية</v-chip>
+										</div>
+
+
+									</v-flex>
+
+									<v-flex d-flex xs6 sm6 md3>
+										<h1 style="float: left">
+											<span>[</span>
+											<span v-text="sourceLanguageSymbole">en</span>
+											<span>]</span>
+
+											<span> ⇒ </span>
+
+											<span>[</span>
+											<span v-text="targetLanguageSymbole"></span>
+											<span>]</span>
+										</h1>
+									</v-flex>
+
+									<br>
+									<!-- ====================== -->
+									<div v-on:click="translateText">
+										<v-flex d-flex xs6 sm6 md3>
+
+											<v-chip color="primary" text-color="white" class="cursor">
+												<v-avatar>
+													<v-icon>language</v-icon>
+												</v-avatar>
+												let's translate
+											</v-chip>
+
+										</v-flex>
+									</div>
+								</div>
+
+
+
+
+								<br>
+								<div v-show="isShowZoneDoneTranslate">
+
+									<!-- ====================== -->
+									<v-card-title primary class="title">Done translate</v-card-title>
+
+									<v-flex d-flex xs10 sm10 md10>
+										<div id="targetTranslatePhrase" v-text="targetTranslatePhrase"
+											contenteditable="true" class="divTextarea"></div>
+									</v-flex>
+
+
+									<br>
+									<!-- ====================== -->
+									<div v-on:click="speechText">
+										<v-flex d-flex xs6 sm6 md3>
+
+											<v-chip color="primary" text-color="white" class="cursor">
+												<v-avatar>
+													<v-icon>hearing</v-icon>
+												</v-avatar>
+												let's hear
+											</v-chip>
+
+										</v-flex>
+										<v-card-title primary class="explication">if you cant speak, please close-open
+											browser</v-card-title>
+									</div>
+								</div>
+								<br>
+								<br>
+								<br>
+
+
+							</v-card>
+						</v-flex>
+
+					</v-layout>
+				</v-container>
+			</v-app>
+		</div>
+
+	</div>
+
+
+
+	<script src="static/js/vue.min.js"></script>
+	<script src="static/js/vuetify.js"></script>
+	<script src="static/js/script.js"></script>
+
+	<link href="/static/css/additional.less" rel="stylesheet/less" type="text/css">
+	<script src="/static/js/less.min.js"></script>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('sw.js').then(function (registration) {
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+			}).catch(function (err) {
+				console.log('ServiceWorker registration failed: ', err);
+			});
+		}
+	</script>
+
+</body>
+
+</html>

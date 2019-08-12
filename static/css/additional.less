@@ -1,0 +1,103 @@
+// @left_pane_witdh : 15%;
+// @left_pane_witdh_min : 1%;
+// @cent_line_witdh : 0.5%;
+// // @cent_line_witdh_hover :  @cent_line_witdh * 2 ;
+// @rght_pane_witdh : 100% - @left_pane_witdh - @cent_line_witdh;
+// @separate_line_width_normal : 0.5%;
+// @separate_line_position : 20%;
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
+// @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+canvas {
+    // border: 0px #333 solid; // max-width: 100%;
+    height: auto;
+}
+
+.test {
+    background-color: gray;
+    color: white;
+}
+
+.test:hover {
+    background-color: lightsteelblue;
+    color: black;
+}
+
+.submitButton {
+    padding: 2%, 1%;
+    background-color: lightskyblue;
+    width: auto;
+    max-width: 15%;
+    cursor: pointer;
+    border-radius: 8px;
+    max-width: 33%;
+    width: 33%;
+    text-align: center;
+}
+
+.submitButton:hover {
+    background-color: khaki;
+}
+
+label,
+input {
+    cursor: pointer;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.devMode {
+    display: none;
+}
+
+.selectedSymbol {
+    color: red;
+}
+
+#imageSelect {
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.buttonHidden {
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    position: absolute; // right: 0;
+    // top: 0;
+    // margin: 0;
+    // font-size: 100px;
+    cursor: pointer;
+}
+
+.divTextarea {
+    border: 1px gray solid; // max-width: 100%;
+    cursor: pointer;
+    text-align: left;
+    width: inherit;
+}
+
+#title {
+    font-size: 40px;
+    text-align: center;
+}
+
+.chip .chip__content {
+    cursor: pointer;
+
+}
+
+body {
+    background-color: white; // margin: 2%;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#preview {
+    max-width: 90%;
+}

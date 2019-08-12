@@ -1,0 +1,19 @@
+{
+	"name": "cameraTranslate",
+	"short_name": "cameraTranslate",
+	"icons": [{
+			"src": "public/camera-icon512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "public/camera-icon192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "cyan",
+	"theme_color": "#317EFB"
+}
