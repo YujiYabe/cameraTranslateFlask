@@ -55,7 +55,8 @@ new Vue({
 		canvasDraw: function (event) {
 			let file = document.getElementById('imageSelect').files[0];
 			// //画像ファイルかチェック
-			if (!file.name.match(/.(jpg|jpeg|png|gif)$/i)) {
+			let isImageFile = file.name.match(/.(jpg|jpeg|png|gif)$/i);
+			if (!isImageFile) {
 				alert("画像ファイルを選択してください");
 				document.getElementById('imageSelect').value = ''; //選択したファイルをクリア
 			} else {
@@ -199,13 +200,14 @@ new Vue({
 		},
 		//=========================================================================-
 		displayWaitImage: function (isWait, event) {
+			let isWaitImageZone = 'none';
+			let isApplicationZone = 'block'
 			if (isWait) {
-				document.getElementById('waitImageZone').style.display = 'block';
-				document.getElementById('applicationZone').style.display = 'none';
-			} else {
-				document.getElementById('waitImageZone').style.display = 'none';
-				document.getElementById('applicationZone').style.display = 'block';
+				isWaitImageZone = 'block';
+				isApplicationZone = 'none'
 			}
+			document.getElementById('waitImageZone').style.display = isWaitImageZone;
+			document.getElementById('applicationZone').style.display = isApplicationZone;
 		},
 
 
