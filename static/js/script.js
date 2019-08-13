@@ -17,6 +17,26 @@ new Vue({
 		// isShowZoneScanedText: true,
 		// isShowZoneDoneTranslate: true,
 
+		langPair: {
+			ja: 'jp',
+			en: 'en',
+			es: 'es',
+			fr: 'fr',
+			zh: 'zh',
+			ru: 'ru',
+		},
+		langSet: {
+			ja: 'ja-JP',
+			en: 'en-US',
+			es: 'es-ES',
+			fr: 'fr-FR',
+			zh: 'zh-CN',
+			ru: 'ru-RU',
+			ko: 'ko-KO',
+			ar: 'ar-AR',
+		},
+
+
 	},
 	mounted() {
 		//デフォルト変換先言語の設定
@@ -143,13 +163,7 @@ new Vue({
 		//=========================================================================-
 		translateText: function (event) {
 			this.displayWaitImage(true);
-			var langPair = {};
-			langPair.ja = 'jp';
-			langPair.en = 'en';
-			langPair.es = 'es';
-			langPair.fr = 'fr';
-			langPair.zh = 'zh';
-			langPair.ru = 'ru';
+
 
 			localStorage.sourceTranslatePhrase = this.sourceTranslatePhrase;
 
@@ -158,7 +172,7 @@ new Vue({
 			var sourceLanguageSymbole = this.sourceLanguageSymbole;
 
 
-			if (langPair[sourceLanguageSymbole] == targetLanguageSymbole) {
+			if (this.langPair[sourceLanguageSymbole] == targetLanguageSymbole) {
 
 				this.isShowZoneDoneTranslate = true;
 
@@ -203,15 +217,6 @@ new Vue({
 			this.displayWaitImage(true);
 			speechSynthesis.cancel();
 
-			var langPair = {};
-			langPair.ja = 'ja-JP';
-			langPair.en = 'en-US';
-			langPair.es = 'es-ES';
-			langPair.fr = 'fr-FR';
-			langPair.zh = 'zh-CN';
-			langPair.ru = 'ru-RU';
-			langPair.ko = 'ko-KO';
-			langPair.ar = 'ar-AR';
 			var targetLanguageSymbole = this.targetLanguageSymbole;
 
 			var synthes = new SpeechSynthesisUtterance();
@@ -220,7 +225,7 @@ new Vue({
 			synthes.rate = 0.9;
 			synthes.pitch = 0;
 			synthes.text = this.targetTranslatePhrase;
-			synthes.lang = langPair[targetLanguageSymbole];
+			synthes.lang = this.langSet[targetLanguageSymbole];
 
 			speechSynthesis.speak(synthes);
 			this.displayWaitImage(false);
@@ -251,8 +256,6 @@ new Vue({
 				.replace(/>/g, "&gt;")
 				.replace(/\r/g, "&#13;")
 				.replace(/\n/g, "&#10;")
-
-				; //-----------------------
 			return returnstr;
 		},
 
