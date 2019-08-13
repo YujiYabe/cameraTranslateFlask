@@ -164,51 +164,29 @@ new Vue({
 		translateText: function (event) {
 			this.displayWaitImage(true);
 
-
 			localStorage.sourceTranslatePhrase = this.sourceTranslatePhrase;
-
 			var sourceTranslatePhrase = document.getElementById('sourceTranslatePhrase').innerText;
 			var targetLanguageSymbole = this.targetLanguageSymbole;
-			var sourceLanguageSymbole = this.sourceLanguageSymbole;
 
-
-			if (this.langPair[sourceLanguageSymbole] == targetLanguageSymbole) {
-
+			if (this.langPair[this.sourceLanguageSymbole] == targetLanguageSymbole) {
 				this.isShowZoneDoneTranslate = true;
-
-				var unescapestr = this.unescapeHTML(targetTranslate);
-
-				this.targetTranslatePhrase = unescapestr;
+				this.targetTranslatePhrase = this.unescapeHTML(targetTranslate);
 				this.displayWaitImage(false);
-
 				return;
 			} else {
-
 				var post_data = new URLSearchParams();
-				// post_data.append('sourceTranslatePhrase', sourceTranslatePhrase);
-				// post_data.append('targetLanguageSymbole', targetLanguageSymbole);
-
 				post_data.append('text', sourceTranslatePhrase);
 				post_data.append('target', targetLanguageSymbole);
-
 				axios.post('translate', post_data)
 					.then(function (res) {
 						this.isShowZoneDoneTranslate = true;
-
-						var unescapestr = this.escapeHTML(res.data.translatedText);
-						console.log(unescapestr);
-
-						localStorage.targetTranslatePhrase = unescapestr;
-
+						localStorage.targetTranslatePhrase = this.escapeHTML(res.data.translatedText);
 						this.targetTranslatePhrase = localStorage.targetTranslatePhrase;
 						this.displayWaitImage(false);
-
 					}.bind(this)).catch(function (err) {
 						this.displayWaitImage(false);
 						console.log(err);
 					}.bind(this));
-				// this.wait = false;
-
 			}
 		},
 
