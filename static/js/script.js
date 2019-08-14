@@ -54,30 +54,26 @@ new Vue({
 		//=========================================================================-
 		canvasDraw: function (event) {
 			let file = document.getElementById('imageSelect').files[0];
-			// //画像ファイルかチェック
 			let isImageFile = file.name.match(/.(jpg|jpeg|png|gif)$/i);
 			if (!isImageFile) {
 				alert("画像ファイルを選択してください");
 				document.getElementById('imageSelect').value = ''; //選択したファイルをクリア
 			} else {
-				let fr = new FileReader();
-				let self = this;
+				let fr = new FileReader(), self = this;
 				fr.onload = function () {
 					document.getElementById('preview').src = fr.result;//選択した画像を一旦imgタグに表示
 					//imgタグに表示した画像をimageオブジェクトとして取得
 					let image = new Image();
 					image.src = document.getElementById('preview').src;
 					let id = setInterval(function () {
-						if (image.width > 0) {
-							//縦横比を維持した縮小サイズを取得
-							self.resizeImageHeight = image.height * (self.resizeImageWidth / image.width);
-							let canvas = document.getElementById('canvas');
-							let ctx = canvas.getContext('2d');
-							document.getElementById('canvas').setAttribute('width', self.resizeImageWidth);
-							document.getElementById('canvas').setAttribute('height', self.resizeImageHeight);
-							ctx.drawImage(image, 0, 0, self.resizeImageWidth, self.resizeImageHeight);
-							clearInterval(id);　//idをclearIntervalで指定している
-						}
+						//縦横比を維持した縮小サイズを取得
+						self.resizeImageHeight = image.height * (self.resizeImageWidth / image.width);
+						let canvas = document.getElementById('canvas');
+						let ctx = canvas.getContext('2d');
+						document.getElementById('canvas').setAttribute('width', self.resizeImageWidth);
+						document.getElementById('canvas').setAttribute('height', self.resizeImageHeight);
+						ctx.drawImage(image, 0, 0, self.resizeImageWidth, self.resizeImageHeight);
+						clearInterval(id);　//idをclearIntervalで指定している
 					}, 10);
 				};
 				this.isShowPreview = true;

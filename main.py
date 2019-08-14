@@ -10,7 +10,7 @@ from google.cloud import translate
 app = Flask(__name__)
 
 
-ALLOWED_EXTENSIONS = set(["png", "jpg", "jpeg", "gif"])
+# ALLOWED_EXTENSIONS = set(["png", "jpg", "jpeg", "gif"])
 
 
 @app.route("/", methods=["GET"])
@@ -38,8 +38,8 @@ def trnslt():
 @app.route("/scan", methods=["POST"])
 def scan():
     # check upload file
-    # if "img_file" not in request.files:
-    #     return (jsonify({"error": "file not exist"}), 400)
+    if "img_file" not in request.files:
+        return (jsonify({"error": "file not exist"}), 400)
 
     img_file = request.files["img_file"]
 
@@ -67,12 +67,12 @@ def scan():
     return (jsonify({"locale": locale, "description": description}), 200)
 
 
-def allwed_file(filename):
-    # 画像ファイルの拡張子チェック
-    checkstatus = (
-        "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
-    )
-    return checkstatus
+# def allwed_file(filename):
+#     # 画像ファイルの拡張子チェック
+#     checkstatus = (
+#         "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+#     )
+#     return checkstatus
 
 
 if __name__ == "__main__":
